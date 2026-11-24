@@ -1,0 +1,916 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R. Srinivas | Developer Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+  --bg: #080914;
+  --card: #111426;
+  --primary: #9b7bff;
+  --secondary: #35d9ff;
+  --text: #f5f5ff;
+  --muted: #a4a6bd;
+  --border: rgba(255,255,255,.09);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+section {
+  padding: 100px 0;
+}
+
+.section-title {
+  font-size: clamp(30px, 5vw, 42px);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.section-title span {
+  color: var(--primary);
+}
+
+.section-subtitle {
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 50px;
+  line-height: 1.7;
+}
+
+/* NAVBAR */
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background: rgba(8,9,20,.85);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.logo span {
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  color: var(--muted);
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: #764cff;
+  filter: blur(180px);
+  opacity: .22;
+  right: 0;
+  top: 20%;
+  pointer-events: none;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+}
+
+.tag {
+  display: inline-block;
+  color: var(--secondary);
+  border: 1px solid rgba(53,217,255,.3);
+  padding: 9px 17px;
+  border-radius: 30px;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #a58aff, #35d9ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero h2 {
+  font-size: 24px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+#typing {
+  color: var(--secondary);
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.9;
+  font-size: 15px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 9px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #8661ff, #4eabff);
+  color: white;
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(130,90,255,.2);
+}
+
+.profile-box {
+  width: 290px;
+  height: 290px;
+  margin: auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8d65ff, #35d9ff);
+  padding: 5px;
+  box-shadow: 0 0 70px rgba(139,100,255,.25);
+}
+
+.profile-inner {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 85px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* SOCIALS */
+
+.socials {
+  display: flex;
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.socials a {
+  width: 43px;
+  height: 43px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: .3s;
+  color: var(--muted);
+}
+
+.socials a:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-5px);
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.about-card, .info-card {
+  background: var(--card);
+  padding: 35px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+
+.about-card h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.about-card p {
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 15px;
+}
+
+.info-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.info-item small {
+  color: var(--muted);
+  display: block;
+  margin-bottom: 9px;
+}
+
+.info-item strong {
+  font-size: 14px;
+}
+
+/* SKILLS */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.skill-card {
+  background: var(--card);
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  transition: .3s;
+}
+
+.skill-card:hover, .project-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--primary);
+}
+
+.skill-card i {
+  font-size: 30px;
+  color: var(--primary);
+  margin-bottom: 18px;
+}
+
+.skill-card h3 {
+  margin-bottom: 12px;
+}
+
+.skill-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* PROJECTS */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.project-image {
+  height: 170px;
+  background: linear-gradient(135deg, #35205d, #142e50);
+  display: grid;
+  place-items: center;
+  font-size: 55px;
+  color: #c0aaff;
+}
+
+.project-info {
+  padding: 25px;
+}
+
+.project-info h3 {
+  margin-bottom: 12px;
+}
+
+.project-info p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.project-link {
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+/* EDUCATION */
+
+.education-card {
+  max-width: 700px;
+  margin: auto;
+  padding: 30px;
+  border-left: 3px solid var(--primary);
+  background: var(--card);
+  border-radius: 0 15px 15px 0;
+}
+
+.education-card h3 {
+  margin-bottom: 12px;
+}
+
+.education-card p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.education-card span {
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+/* CONTACT */
+
+.contact-box {
+  max-width: 700px;
+  margin: auto;
+  padding: 35px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.contact-box input,
+.contact-box textarea {
+  width: 100%;
+  background: #090c1a;
+  border: 1px solid var(--border);
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 17px;
+  outline: none;
+  font-family: inherit;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus {
+  border-color: var(--primary);
+}
+
+.contact-box textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.contact-box button {
+  border: none;
+}
+
+#form-message {
+  color: var(--secondary);
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ANIMATIONS */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: .8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width: 850px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero p {
+    margin: auto;
+  }
+
+  .hero-buttons, .socials {
+    justify-content: center;
+  }
+
+  .profile-box {
+    grid-row: 1;
+    width: 220px;
+    height: 220px;
+  }
+
+  .profile-inner {
+    font-size: 65px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid, .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    background: #111426;
+    padding: 25px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+@media(max-width: 550px) {
+  section {
+    padding: 75px 0;
+  }
+
+  .skills-grid, .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-card, .info-card, .contact-box {
+    padding: 23px;
+  }
+
+  .hero h2 {
+    font-size: 19px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+  <div class="container navbar">
+    <a href="#home" class="logo">R.<span>Srinivas</span></a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container hero-content">
+
+    <div class="hero-text">
+      <span class="tag">WELCOME TO MY PORTFOLIO</span>
+
+      <h1>Hi, I'm <span class="gradient-text">R. Srinivas</span></h1>
+
+      <h2>I'm a <span id="typing"></span></h2>
+
+      <p>
+        A passionate and enthusiastic technology student who loves
+        learning new technologies, building creative projects and
+        exploring the world of web development.
+        Welcome to my personal portfolio!
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">
+          Explore My Work <i class="fas fa-arrow-right"></i>
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+          Contact Me <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+
+      <div class="socials">
+        <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:your-email@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+
+    <div class="profile-box">
+      <div class="profile-inner">RS</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <p class="section-subtitle">A little introduction about myself</p>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Who Am I?</h3>
+        <p>
+          Hello! I'm R. Srinivas. I'm a student interested in
+          programming, technology, web development and creative design.
+        </p>
+        <p>
+          I enjoy learning by building projects and solving problems.
+          My goal is to become a skilled developer and create useful
+          digital experiences.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-item">
+          <small>Name</small>
+          <strong>R. Srinivas</strong>
+        </div>
+        <div class="info-item">
+          <small>Profession</small>
+          <strong>Student</strong>
+        </div>
+        <div class="info-item">
+          <small>Interest</small>
+          <strong>Web Development</strong>
+        </div>
+        <div class="info-item">
+          <small>Goal</small>
+          <strong>Software Developer</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">My <span>Skills</span></h2>
+    <p class="section-subtitle">Technologies I'm learning and exploring</p>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <i class="fab fa-html5"></i>
+        <h3>HTML</h3>
+        <p>Creating structured and semantic web pages.</p>
+      </div>
+
+      <div class="skill-card">
+        <i class="fab fa-css3-alt"></i>
+        <h3>CSS</h3>
+        <p>Designing responsive and beautiful interfaces.</p>
+      </div>
+
+      <div class="skill-card">
+        <i class="fab fa-js"></i>
+        <h3>JavaScript</h3>
+        <p>Learning interactive web development.</p>
+      </div>
+
+      <div class="skill-card">
+        <i class="fab fa-python"></i>
+        <h3>Python</h3>
+        <p>Learning programming and logical problem solving.</p>
+      </div>
+
+      <div class="skill-card">
+        <i class="fas fa-palette"></i>
+        <h3>UI/UX Design</h3>
+        <p>Exploring creative and user-friendly designs.</p>
+      </div>
+
+      <div class="skill-card">
+        <i class="fas fa-code"></i>
+        <h3>Problem Solving</h3>
+        <p>Improving my coding and analytical thinking.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">My <span>Projects</span></h2>
+    <p class="section-subtitle">Some projects I have worked on or plan to build</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-globe"></i>
+        </div>
+        <div class="project-info">
+          <h3>Personal Portfolio</h3>
+          <p>A responsive personal website showcasing my skills and projects.</p>
+          <a href="#home" class="project-link">View Project →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="project-info">
+          <h3>Gaming Website</h3>
+          <p>A creative gaming website concept with an attractive interface.</p>
+          <a href="#contact" class="project-link">Project Details →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-image">
+          <i class="fas fa-mobile-screen"></i>
+        </div>
+        <div class="project-info">
+          <h3>Social Media App</h3>
+          <p>A social media application concept with modern UI/UX features.</p>
+          <a href="#contact" class="project-link">Project Details →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <h2 class="section-title">My <span>Education</span></h2>
+    <p class="section-subtitle">My academic journey</p>
+
+    <div class="education-card">
+      <span>Currently Studying</span>
+      <h3>Bachelor of Technology (B.Tech)</h3>
+      <p>
+        Institution: NIAT<br>
+        Focus: Programming, Computer Science and Technology
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact <span>Me</span></h2>
+    <p class="section-subtitle">Let's connect and create something amazing</p>
+
+    <div class="contact-box">
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <textarea id="message" placeholder="Write your message..." required></textarea>
+
+        <button type="submit" class="btn btn-primary">
+          Send Message <i class="fas fa-paper-plane"></i>
+        </button>
+
+        <p id="form-message"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> R. Srinivas. All Rights Reserved.</p>
+    <p style="margin-top:10px;">Designed with ❤️ by R. Srinivas</p>
+  </div>
+</footer>
+
+<script>
+// TYPING ANIMATION
+const words = [
+  "Student",
+  "Web Developer",
+  "Creative Thinker",
+  "Future Software Developer"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect() {
+  const current = words[wordIndex];
+  const typing = document.getElementById("typing");
+
+  typing.textContent = current.substring(0, charIndex);
+
+  if (!deleting && charIndex < current.length) {
+    charIndex++;
+    setTimeout(typeEffect, 100);
+  } else if (deleting && charIndex > 0) {
+    charIndex--;
+    setTimeout(typeEffect, 50);
+  } else {
+    deleting = !deleting;
+
+    if (!deleting) {
+      wordIndex = (wordIndex + 1) % words.length;
+    }
+
+    setTimeout(typeEffect, 800);
+  }
+}
+
+typeEffect();
+
+// MOBILE NAVIGATION
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("show");
+  });
+});
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll("section > .container").forEach(element => {
+  element.classList.add("reveal");
+  observer.observe(element);
+});
+
+// FOOTER YEAR
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+// CONTACT FORM
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const subject = document.getElementById("subject").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const yourEmail = "your-email@example.com";
+
+  if (yourEmail === "your-email@example.com") {
+    document.getElementById("form-message").textContent =
+      "Please configure your email address in the JavaScript first.";
+    return;
+  }
+
+  const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+
+  window.location.href =
+    `mailto:${yourEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+</script>
+
+</body>
+</html>
